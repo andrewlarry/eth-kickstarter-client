@@ -2,11 +2,12 @@
 // delivered when the root route ('/') is requested
 
 import React, { Component } from 'react';
+import { Card, Button } from 'semantic-ui-react';
+
+// Next.js doesn't have built in support for css modules
+// import 'semantic-ui-css/semantic.min.css';
 
 import factory from '../eth/factory';
-
-// Render the list of campaigns created by the factory contract
-
 class CampaignIndex extends Component {
 
   // "static" defines a "class" function (i.e. does not require an instance of the class)
@@ -20,11 +21,33 @@ class CampaignIndex extends Component {
     return { campaigns };
   }
 
+  renderCampaigns() {
+    // Create the items for a semantic Card.Group
+    const items = this.props.campaigns.map(address => {
+      return {
+        header: address,
+        description: <a>View Campaign</a>,
+        fluid: true
+      };
+    });
+
+    return <Card.Group items={items} />;
+  }
+
   render() {
     return (
-      <h1>{this.props.campaigns[0]}</h1>
+      <div>
+        {/* Next.js doesn't have out of the box support for css modules. Use the CDN link for now. */}
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css"></link>
+        <h3>Open Campaigns</h3>
+        {this.renderCampaigns()}
+        <Button 
+          content="Create Campaign"
+          icon="add circle"
+          primary
+        />
+      </div>
     );
-    
   }
 }
 
