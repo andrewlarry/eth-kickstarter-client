@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Form, Button, Input, Message } from 'semantic-ui-react';
 
+import { Router } from '../../routes';
 import Layout from '../../components/Layout';
 import factory from '../../eth/factory';
 import web3 from '../../eth/web3';
-
 
 class CampaignNew extends Component {
   state = {
@@ -28,7 +28,7 @@ class CampaignNew extends Component {
         .send({
           from: accounts[0]
         });
-      this.setState({ loading: false });
+      Router.pushRoute('/');
     } catch(err) {
       this.setState({ errorMessage: err.message });
     }
