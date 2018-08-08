@@ -4,9 +4,11 @@
 import React, { Component } from 'react';
 import { Card, Button } from 'semantic-ui-react';
 
+
 // Next.js doesn't have built in support for css modules
 // import 'semantic-ui-css/semantic.min.css';
 
+import Layout from '../components/Layout';
 import factory from '../eth/factory';
 class CampaignIndex extends Component {
 
@@ -36,17 +38,18 @@ class CampaignIndex extends Component {
 
   render() {
     return (
-      <div>
+      <Layout>
         {/* Next.js doesn't have out of the box support for css modules. Use the CDN link for now. */}
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css"></link>
         <h3>Open Campaigns</h3>
-        {this.renderCampaigns()}
         <Button 
           content="Create Campaign"
           icon="add circle"
+          floated="right"
           primary
         />
-      </div>
+        {this.renderCampaigns()}
+      </Layout>
     );
   }
 }
