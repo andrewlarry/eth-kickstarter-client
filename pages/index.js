@@ -39,8 +39,6 @@ class CampaignIndex extends Component {
   render() {
     return (
       <Layout>
-        {/* Next.js doesn't have out of the box support for css modules. Use the CDN link for now. */}
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css"></link>
         <h3>Open Campaigns</h3>
         <Button 
           content="Create Campaign"
