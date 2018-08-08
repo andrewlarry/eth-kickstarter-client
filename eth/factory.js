@@ -7,6 +7,5 @@ const instance = new web3.eth.Contract(
   address
 );
 
-console.log(address);
 
 export default instance;
