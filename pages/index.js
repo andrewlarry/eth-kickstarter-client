@@ -8,6 +8,7 @@ import { Card, Button } from 'semantic-ui-react';
 // Next.js doesn't have built in support for css modules
 // import 'semantic-ui-css/semantic.min.css';
 
+import { Link } from '../routes';
 import Layout from '../components/Layout';
 import factory from '../eth/factory';
 class CampaignIndex extends Component {
@@ -28,7 +29,11 @@ class CampaignIndex extends Component {
     const items = this.props.campaigns.map(address => {
       return {
         header: address,
-        description: <a>View Campaign</a>,
+        description: (
+          <Link route={`/campaigns/${address}`}>
+            <a>View Campaign</a>
+          </Link>
+        ),
         fluid: true
       };
     });
@@ -40,12 +45,17 @@ class CampaignIndex extends Component {
     return (
       <Layout>
         <h3>Open Campaigns</h3>
-        <Button 
-          content="Create Campaign"
-          icon="add circle"
-          floated="right"
-          primary
-        />
+        <Link route="/campaigns/new">
+          <a>
+            <Button 
+              content="Create Campaign"
+              icon="add circle"
+              floated="right"
+              primary
+            />
+          </a>
+        </Link>
+
         {this.renderCampaigns()}
       </Layout>
     );
