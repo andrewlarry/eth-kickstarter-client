@@ -9,7 +9,8 @@ import web3 from '../../eth/web3';
 class CampaignNew extends Component {
   state = {
     minimumContribution: '',
-    errorMessage: ''
+    errorMessage: '',
+    loading: false
   };
 
   // Use this syntax to prevent binding 'this'
@@ -17,16 +18,23 @@ class CampaignNew extends Component {
     // Prevent form submission
     event.preventDefault();
 
-    const accounts = await web3.eth.getAccounts();
+    // Start the button spinner
+    this.setState({ loading: true, errorMessage: '' });
 
     try {
+      // Grab the metamask accounts
+      const accounts = await web3.eth.getAccounts();
       await factory.methods.createCampaign(this.state.minimumContribution)
         .send({
           from: accounts[0]
         });
+      this.setState({ loading: false });
     } catch(err) {
       this.setState({ errorMessage: err.message });
     }
+
+    // Resolve spinner
+    this.setState({ loading: false });
   };
 
   render() {
@@ -48,7 +56,7 @@ class CampaignNew extends Component {
             header="Error!"
             content={this.state.errorMessage}
           />
-          <Button primary>Create</Button>
+          <Button loading={this.state.loading} primary>Create</Button>
         </Form>
       </Layout>
     );
