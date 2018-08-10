@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Card, Grid } from 'semantic-ui-react';
+import { Card, Grid, Button } from 'semantic-ui-react';
 
+import { Link } from '../../routes'; 
 import ContributeForm from '../../components/ContributeForm'
 import Layout from '../../components/Layout';
 import Campaign from '../../eth/campaign';
@@ -70,15 +71,17 @@ class CampaignShow extends Component {
         <h3>Campaign Page</h3>
         <Grid>
           <Grid.Column width={10}>
-            {this.renderCards()}  
+            {this.renderCards()}
+            <Link route={`/campaigns/${this.props.address}/requests`}>
+            <a>
+              <Button primary>View Requests</Button>
+            </a>
+            </Link>  
           </Grid.Column>
           <Grid.Column width={6}>
             <ContributeForm address={this.props.address} />
           </Grid.Column>
         </Grid>
-       
-        
-        
       </Layout>
     );
   }
