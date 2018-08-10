@@ -9,9 +9,17 @@ class CampaignShow extends Component {
     // web3 contract instance 
     const campaign = Campaign(query.address);
 
+    // Grab the summary from the contract
     const summary = await campaign.methods.getSummary().call()
-    console.log(summary);
-    return {};
+
+    // The return object will be passed as props
+    return {
+      minimumContribution: summary[0],
+      balance: summary[1],
+      requestCount: summary[2],
+      approversCount: summary[3],
+      manager: summary[4]
+    };
   }
 
   render() {
