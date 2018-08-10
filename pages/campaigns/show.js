@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, Grid } from 'semantic-ui-react';
 
+import ContributeForm from '../../components/ContributeForm'
 import Layout from '../../components/Layout';
-import Campaign from '../../eth/campaign.js';
+import Campaign from '../../eth/campaign';
 import web3 from '../../eth/web3';
 
 class CampaignShow extends Component {
@@ -65,8 +66,18 @@ class CampaignShow extends Component {
   render() {
     return(
       <Layout>
-        <h2>Campaign Page</h2>
-        {this.renderCards()}
+        <h3>Campaign Page</h3>
+        <Grid>
+          <Grid.Column width={10}>
+            {this.renderCards()}  
+          </Grid.Column>
+          <Grid.Column width={6}>
+            <ContributeForm />
+          </Grid.Column>
+        </Grid>
+       
+        
+        
       </Layout>
     );
   }
