@@ -3,7 +3,7 @@ import Campaign from './build/CampaignFactory.json';
 
 export default (address) => {
   return new web3.eth.Contract(
-    JSON.parse(CampaignFactory),
+    JSON.parse(Campaign.interface),
     address
   );
 };
