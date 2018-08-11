@@ -6,7 +6,8 @@
   "scripts": {
     "build": "next build",
     "heroku-postbuild": "npm run build",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "start": "NODE_ENV=production"
   },
   "engines": {
     "node": "8.x"
