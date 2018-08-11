@@ -6,7 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # Config
-config/
 .DS_Store
 
 # Runtime data

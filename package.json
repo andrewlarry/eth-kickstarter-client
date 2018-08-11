@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "next build",
+    "heroku-postbuild": "npm run build",
     "dev": "node server.js"
+  },
+  "engines": {
+    "node": "8.x"
   },
   "repository": {
     "type": "git",
